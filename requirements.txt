@@ -1,0 +1,4 @@
+flask==3.0.3
+pypresence==4.3.0
+PyQt5==5.15.10
+PyQtWebEngine==5.15.6

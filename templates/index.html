@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DiscordSC</title>
+    <link rel="stylesheet" href="/static/styles.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Discord Status Changer</h1>
+        <div>
+            <label for="largeImageInput">Large Image:</label>
+            <input type="text" id="largeImageInput" placeholder="Enter large image url" value="{{ data.large_image }}">
+        </div>
+        <div>
+            <label for="largeTextInput">Large Text:</label>
+            <textarea id="largeTextInput" placeholder="Enter large text" maxlength="128">{{ data.large_text }}</textarea>
+        </div>
+        <div>
+            <label for="detailsInput">Details:</label>
+            <input type="text" id="detailsInput" placeholder="Enter details" value="{{ data.details }}">
+        </div>
+        <div>
+            <label for="stateInput">State:</label>
+            <input type="text" id="stateInput" placeholder="Enter state" value="{{ data.state }}">
+        </div>
+        <button onclick="updatePresence()">Update Presence</button>
+    </div>
+
+    <script>
+        async function updatePresence() {
+            const largeImage = document.getElementById('largeImageInput').value;
+            const largeText = document.getElementById('largeTextInput').value;
+            const details = document.getElementById('detailsInput').value;
+            const state = document.getElementById('stateInput').value;
+
+            const response = await fetch('/update_presence', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    large_image: largeImage,
+                    large_text: largeText,
+                    details: details,
+                    state: state
+                })
+            });
+        }
+    </script>
+</body>
+</html>
