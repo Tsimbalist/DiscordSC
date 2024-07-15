@@ -132,7 +132,7 @@ class MainWindow(QMainWindow):
 
     def open_github(self):
         import webbrowser
-        webbrowser.open_new_tab('https://github.com/Tsimbalist')
+        webbrowser.open_new_tab('https://github.com/Tsimbalist/DiscordSC')
 
     def quit_application(self):
         QApplication.quit()
